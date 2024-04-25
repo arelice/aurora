@@ -29,11 +29,11 @@ func RegisterRouter() *gin.Engine {
 
 	router.POST("/auth/session", handler.session)
 	router.POST("/auth/refresh", handler.refresh)
-	router.OPTIONS("/rjl/v1/chat/completions", optionsHandler)
+	router.OPTIONS("/rjlai/v1/chat/completions", optionsHandler)
 
 	authGroup := router.Group("").Use(middlewares.Authorization)
-	authGroup.POST("/rjl/v1/chat/completions", handler.nightmare)
-	authGroup.GET("/rjl/v1/models", handler.engines)
+	authGroup.POST("/rjlai/v1/chat/completions", handler.nightmare)
+	authGroup.GET("/rjlai/v1/models", handler.engines)
 	authGroup.POST("/backend-api/conversation", handler.chatgptConversation)
 	return router
 }
